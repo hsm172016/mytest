@@ -1,0 +1,28 @@
+{
+  "allShops":{
+    "totalMoney":0,
+    "shopList":[
+      {
+        "shopId":"001",
+        "shopName":"移动A套餐",
+        "shopPrice":58.00,
+        "shopNumber":1,
+        "shopImage":"img/4g.png"
+      },
+      {
+        "shopId":"002",
+        "shopName":"移动B套餐",
+        "shopPrice":88.00,
+        "shopNumber":1,
+        "shopImage":"img/he.png"
+      },
+      {
+        "shopId":"003",
+        "shopName":"移动C套餐",
+        "shopPrice":108.00,
+        "shopNumber":1,
+        "shopImage":"img/c6.jpg"
+      }
+    ]
+  }
+}

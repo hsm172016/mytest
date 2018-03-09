@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my-date></my-date>
+</div>
+<script src="vuejs/vue.js"></script>
+<script type="text/javascript">
+    //1.创建组件构造器
+    let Profile = Vue.extend({
+        //1.1模板选项
+        template: `
+          <div>
+            <input type="date">
+            <p>今天已经是春天</p>
+          </div>
+        `
+    });
+    //2.注册一个全局的组件
+    Vue.component('my-date',Profile);
+    //.创建vue的实例
+    let vm= new Vue({
+    el:"#app",
+    data:{
+        msg:"你好！"
+    }
+})
+</script>
+</body>
+</html>

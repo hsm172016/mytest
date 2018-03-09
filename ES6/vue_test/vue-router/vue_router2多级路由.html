@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="brs/css/bootstrap.css">
+    <style type="text/css">
+        html {
+            font-size: 62.5%;
+        }
+        body {
+            background-color: #e8e8e8;
+        }
+        .fontp {
+            font-size: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="page-header">
+                    <h1>tt666教育</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 col-xs-offset-2">
+                <div class="list-group">
+                    <!-- 使用 router-link 组件来导航. -->
+                    <!-- 通过传入 `to` 属性指定链接. -->
+                    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+                    <router-link class="list-group-item" to="/h5">Html5学院</router-link>
+                    <router-link class="list-group-item" to="/java">Java学院</router-link>
+                    <router-link class="list-group-item" to="/php">Php学院</router-link>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="panel">
+                    <div class="panel-body">
+                        <!-- 路由出口 -->
+                        <!-- 路由匹配到的组件将渲染在这里 -->
+                        <router-view></router-view>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <template id="h5">
+        <div>
+            <h2>Html5学院</h2>
+            <p class="fontp">掌握面向未来的神器</p>
+            <img src="img/c6.jpg" alt="" width="300" height="400">
+            <div>
+                <ul class="nav nav-tabs" style="margin: 10px 0;font-size: 2rem;">
+                    <router-link to="/h5/basic">基础班</router-link>
+                    <router-link to="/h5/big">大神班</router-link>
+                </ul>
+                <div class="tab-content">
+                    <router-view></router-view>
+                </div>
+            </div>
+
+        </div>
+    </template>
+    <template id="basic">
+        <div>
+            <h3>基础班</h3>
+            <p class="fontp">快速入门</p>
+            <img src="img/c6.jpg" alt=""width="150">
+        </div>
+    </template>
+    <template id="big">
+        <div>
+            <h3>大神班</h3>
+            <p class="fontp">精通html5</p>
+            <img src="img/he.png" alt="" width="150">
+        </div>
+    </template>
+    <template id="java">
+        <div>
+            <h2>java学院</h2>
+            <p>java shi zui hao de </p>
+            <img src="img/4g.png" alt="">
+        </div>
+    </template>
+    <template id="Php">
+        <div>
+            <h2>Php学院</h2>
+            <p>Php的神器</p>
+            <img src="img/he.png" alt="">
+        </div>
+    </template>
+
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script type="text/javascript">
+    //1.创建组件
+    const Html5 = Vue.extend({
+        template:"#h5",
+    });
+    const Basic = Vue.extend({
+        template:"#basic",
+    });
+    const Big = Vue.extend({
+        template:"#big",
+    });
+    const Java = Vue.extend({
+        template:"#java",
+    });
+    const Php = Vue.extend({
+        template:"#Php",
+    });
+    //2.定义路由
+    const routers = [
+        {
+            path: '/h5',
+            component: Html5,
+            children:[
+                {path: 'basic',component: Basic},
+                {path: 'big',component: Big},
+                {path: '/',redirect: 'basic'},
+            ]
+        },
+        {path: '/java',component: Java},
+        {path: '/php',component: Php},
+        //配置根路径
+        {path: '/',redirect: '/h5'},
+    ];
+    //3.创建路由实例
+    const router = new VueRouter({
+        routes: routers,
+    });
+    //4.创建Vue的实例，并挂载
+    new Vue({
+        router
+    }).$mount('#app');
+</script>
+</body>
+</html>

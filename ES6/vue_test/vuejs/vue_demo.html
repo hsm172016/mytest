@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #app {
+            margin: 50px auto;
+            width: 600px;
+        }
+        fieldset {
+            border: 1px solid orangered;
+            margin-bottom: 20px;
+        }
+        fieldset input {
+            width: 200px;
+            height: 30px;
+            margin: 10px 0;
+        }
+        table {
+            width: 600px;
+            margin: 0 auto;
+            border:2px solid orangered;
+            text-align: center;
+            padding: 0;
+        }
+        thead {
+            background: red;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--第一部分呢-->
+        <fieldset>
+            <legend>拇指哥学生录入系统</legend>
+            <div>
+                <span>姓名：</span>
+                <input type="text" placeholder="请输入姓名" v-model="newStudent.name">
+            </div>
+            <div>
+                <span>年龄：</span>
+                <input type="text" placeholder="请输入年龄" v-model="newStudent.age">
+            </div>
+            <div>
+                <span>性别：</span>
+                <select name="" id="" v-model="newStudent.sex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </div>
+            <div>
+                <span>手机号：</span>
+                <input type="text" placeholder="请输入手机号" v-model="newStudent.phone">
+            </div>
+            <button @click="createNewStudent()">创建新用户</button>
+        </fieldset>
+        <!--第二部分-->
+        <table>
+            <thead>
+            <tr>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <td>手机号</td>
+                <td>删除</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(p,index) in persons">
+                <td>{{p.name}}</td>
+                <td>{{p.sex}}</td>
+                <td>{{p.age}}</td>
+                <td>{{p.phone}}</td>
+                <td>
+                    <button @click="deleteStudentMsg(index)">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script src="vue.js"></script>
+    <script type="text/javascript">
+        //1.创建vue的实例
+        let vm= new Vue({
+        el:"#app",
+        data:{
+            persons:[
+                {name:"张三",age:30,sex:"男",phone:"13323562365"},
+                {name:"李四",age:25,sex:"男",phone:"13323562365"},
+                {name:"王五",age:23,sex:"男",phone:"13323562365"},
+                {name:"六六",age:12,sex:"男",phone:"13323562365"},
+            ],
+            newStudent: {name:"",age:0,sex:"男",phone:""}
+        },
+        methods:{
+            //创建一条新纪录
+            createNewStudent(){
+                let myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+                let myage=/^[1-9]+$/;
+                //效验
+                if (this.newStudent.name === ""){
+                    alert('姓名不能为空')
+                    return false;
+                }else if (!myage.test(this.newStudent.age)){
+                    alert('请输入有效年龄')
+                    return false;
+                }else if (!myreg.test(this.newStudent.phone)){
+                    alert('请输入有效手机号')
+                    return false;
+                }
+                //添加信息
+                this.persons.unshift(
+                    this.newStudent
+                );
+                //清空信息
+                this.newStudent = {name:"",age:0,sex:"男",phone:""};
+
+            },
+            //删除一条数据
+            deleteStudentMsg(index){
+                this.persons.splice(index,1)
+            }
+        }
+    })
+    </script>
+</body>
+</html>

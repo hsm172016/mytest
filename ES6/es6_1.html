@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6中let和const</title>
+</head>
+<body>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+
+</body>
+<script>
+    //let 和 const 声明 变量和常量
+    //01-作用域只局限于当前代码块
+    //02-使用let声明的变量，其作用域不会被提升
+    //03-在相同的作用域下不能声明相同的变量
+    //04-for循环体现let 的父子作用域
+    {
+        var str = "张三";
+        console.log(str);
+        let str1 = "李四";
+        console.log(str1);
+    }
+    console.log(str);
+    //04-for循环体现let 的父子作用域
+    /*var btns = document.querySelectorAll("button");
+    for (var i=0; i<btns.length;i++){
+        (function (i) {
+            btns[i].onclick = function () {
+                alert('点击了第'+i+"个按钮");
+            }
+        })(i);
+    }*/
+    let btns = document.querySelectorAll("button");
+    for (let i=0; i<btns.length;i++){
+            btns[i].onclick = function () {
+                alert('点击了第'+i+"个按钮");
+            }
+    }
+    for (let i=0;i<5;i++){
+         i = 10;
+        console.log(i);
+    }
+    for (var i=0;i<5;i++){
+        let i = 10;
+        console.log(i);
+    }
+
+
+
+</script>
+</html>

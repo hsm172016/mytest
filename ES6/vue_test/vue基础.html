@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p v-once>原始值：{{msg}}</p>
+    <p>原始值：{{msg}}</p>
+    <input type="text" v-model="msg">
+    <p v-show="show">要显示出来</p>
+    <p v-show="hide">不要显示出来</p>
+    <p v-if="height > 1.8">小明：身高{{height}}m</p>
+    <p v-else>小明：身高不足1.8m</p>
+    <hr/>
+    <span>你的成绩是</span>
+    <span v-if="score >= 90">优秀</span>
+    <span v-else-if="score >= 70">良好</span>
+    <span v-else-if="score >= 60">及格</span>
+    <span v-else>不及格</span>
+    <input type="text" v-model="score">
+    <hr>
+    <p v-for="score in scores">{{score}}</p>
+    <hr>
+    <p v-for="d in dog">{{d.name}}</p>
+</div>
+<script src="vuejs/vue.js"></script>
+<script type="text/javascript">
+    //1.创建vue的实例
+    let vm= new Vue({
+    el:"#app",
+    data:{//vue中的model -> 数据
+        msg:"你好！",
+        show:true,
+        hide:false,
+        height:1.88,
+        score:90,//优秀 良好 及格 不及格
+        scores:[90,9,6,10],
+        dog:[{name:"wang",age:6,height:1.4},{name:"ddd",age:9,height:4}]
+    }
+})
+</script>
+</body>
+
+</html>

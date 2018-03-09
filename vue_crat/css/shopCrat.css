@@ -1,0 +1,241 @@
+html {
+    font-size: 62.5%;
+}
+html,body {
+    width: 100%;
+    height: 100%;
+    background-color: #F4F4F4;
+    overflow: hidden;
+}
+[v-cloak] {
+    display: none !important;
+}
+/*******************************/
+#Loadingdiv {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 100;
+}
+#Loading {
+    top:50%;
+    left:50%;
+    position: absolute;
+    -webkit-transform: translateY(-50%)  translateX(-50%);
+    transform: translateY(-50%)  translateX(-50%);
+    z-index:100;
+}
+@-webkit-keyframes ball-beat {
+    50% {
+        opacity: 0.2;
+        -webkit-transform: scale(0.75);
+        transform: scale(0.75); }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1); } }
+
+@keyframes ball-beat {
+    50% {
+        opacity: 0.2;
+        -webkit-transform: scale(0.75);
+        transform: scale(0.75); }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1); } }
+
+.ball-beat > div {
+    background-color: #279fcf;
+    width: 15px;
+    height: 15px;
+    border-radius: 100% !important;
+    margin: 2px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    display: inline-block;
+    -webkit-animation: ball-beat 0.7s 0s infinite linear;
+    animation: ball-beat 0.7s 0s infinite linear; }
+.ball-beat > div:nth-child(2n-1) {
+    -webkit-animation-delay: 0.35s !important;
+    animation-delay: 0.35s !important; }
+
+/*****************/
+section {
+    margin: 1rem 0;
+    background-color: #fff;
+}
+.sl_title {
+    box-sizing: border-box;
+    padding: 0.5rem 5px;
+    overflow: hidden;
+    font-size: 1rem;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+.cart_logo,.cart_title {
+    display: inline-block;
+    /*float: left;*/
+    vertical-align: text-bottom;
+}
+.cart_title {
+    font-weight: 600;
+  /*  width: 48%;*/
+}
+.cart_sale {
+    /*float: right;*/
+    color: red;
+    display: inline-block;
+    vertical-align: text-bottom;
+    position: absolute;
+    right: 5px;
+}
+.cart_logo {
+    font-size: 1.5rem;
+    color: red;
+}
+.sl_c {
+    padding: 5px;
+    overflow: hidden;
+}
+.l_left {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+}
+.c_cbox {
+    display: inline-block;
+    border:1px solid #ddd;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #f9fbf8;
+}
+.l_right {
+    display: inline-block;
+    width: 90%;
+}
+.s_img {
+    display: inline-block;
+    width: 34%;
+    height: 100%;
+    vertical-align: middle;
+}
+.s_con {
+    display: inline-block;
+    vertical-align: middle;
+    width: 64%;
+}
+.s_price {
+    width: 100%;
+    height: 2rem;
+    position: relative;
+}
+.s_price > div {
+    position: absolute;
+    top:0.5rem;
+}
+.s_price > div:nth-child(1) {
+    left: 0;
+}
+.s_price > div:nth-child(2) {
+    right: 0;
+}
+.s_deal {
+
+}
+.sd_left {
+    display: inline-block;
+    width: 93%;
+}
+.sd_rt {
+    display: inline-block;
+    width: 5%;
+}
+.btn1 {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 2rem;
+}
+.intber {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30%;
+    text-align: center;
+    margin: 0 5px;
+    border: none;
+    outline: 1px solid #ddd;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #fff;
+    padding:10px 5px;
+    width: 97%;
+}
+footer>span,footer>button {
+    display: inline-block;
+    vertical-align: middle;
+}
+.l_middle {
+    vertical-align: middle;
+    padding-top: 0.2rem;
+}
+#btnss {
+    position: absolute;
+    right: 10px;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    background-color: #fff;
+    
+}
+.checked {
+    background-color :red
+}
+/*删除商品*/
+.panel {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.3);
+}
+.pis_show {
+    display: none;
+}
+.p_ctent {
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 60%;
+    height: 6rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem 0.5rem ;
+    text-align: center;
+}
+.p_title {
+    padding: 0.5rem 0 0.5rem;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.p_footer>button {
+    display: inline-block;
+    padding: .5rem 1rem;
+    margin: 0 1.2rem;
+    font-size: 1rem;
+    background-color: #fff;
+    border:1px solid #ddd
+}

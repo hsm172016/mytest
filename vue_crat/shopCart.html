@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalcble=no,initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/shopCrat.css">
+</head>
+<body>
+    <div id="Loadingdiv">
+        <div id="Loading">
+            <div class="loader-inner ball-beat">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app">
+        <!--头部区域-->
+        <!--安全提示-->
+        <!--中间列表-->
+        <main>
+            <section v-for="(shop,index) in shopListArr">
+                <div class="sl_title">
+                    <span class="cart_logo">JD</span>
+                    <span class="cart_title">京东自营</span>
+                    <span class="cart_sale">您享受满100元免运费服务</span>
+                </div>
+                <div class="sl_c">
+                    <div class="l_left">
+                        <a href="javascript:;" class="c_cbox" :class="{'checked':shop.isSelected}" @click="isSelectedfun(shop)"></a>
+                    </div>
+                    <div class="l_right">
+                        <div class="s_img">
+                            <img :src="shop.shopImage" alt="shop.shopImage" width="100" height="100">
+                        </div>
+                        <div class="s_con">
+                            <a href="javascript:;" v-text="shop.shopName"></a>
+                            <div class="s_price">
+                                <div class="singer">{{shop.shopPrice | meneyFormt(shop.shopPrice)}}</div>
+                                <div class="total">{{shop.shopPrice * shop.shopNumber | meneyFormt(shop.shopPrice * shop.shopNumber)}}</div>
+                            </div>
+                            <div class="s_deal">
+                                <div class="sd_left">
+                                    <span class="btn1" @click="singerShopPrice(shop,false)">-</span>
+                                    <input type="text" value="shop.shopNumber" class="intber" v-model="shop.shopNumber">
+                                    <span class="btn1" @click="singerShopPrice(shop,true)">+</span>
+                                </div>
+                                <div class="sd_rt">
+                                    <span class="sd_del" @click="delfun(shop)">x</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!--尾部合计-->
+        <footer>
+            <div class="l_left l_middle">
+                <a href="javascript:;" class="c_cbox" :class="{'checked':isSelectedAll}" @click="selectedAll(isSelectedAll)"></a>
+            </div>
+            <span>全选</span>
+            <span>&nbsp合计:</span>
+            <span class="zong">{{totalPrice | meneyFormt(totalPrice)}}</span>
+            <button id="btnss">去结账</button>
+        </footer>
+        <!--弹出面板-->
+        <div class="panel" :class="{'pis_show':isHideDelPanel}">
+            <div class="p_ctent">
+                <div class="p_title">
+                    你确定删除这个商品吗？
+                </div>
+                <div class="p_footer">
+                    <button class="cancel" @click="isHideDelPanel=true">取消</button>
+                    <button class="submit" @click="delShop()">确定</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script src="js/vue-resource.js"></script>
+<script src="js/shopCrat.js"></script>
+<script src="js/shopCratlogin.js"></script>
+</html>

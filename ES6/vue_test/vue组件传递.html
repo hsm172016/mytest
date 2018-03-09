@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <!--<my-div message="sssss" imgsrc="20171120112809.jpg"></my-div>
+        <my-div message="26665"></my-div>-->
+        <hr>
+        <my-parent :imgtitle="title" :imgsrc="img"></my-parent>
+    </div>
+    <!--<template id="my_div">
+        <div>
+            <h1>{{message}}</h1>
+            <img :src="imgsrc" alt="">
+        </div>
+    </template>
+    <template>
+        <img src="" alt="">
+    </template>-->
+    <template id="my_img">
+        <img :src="imgsrc" alt="">
+    </template>
+    <template id="my_title">
+        <h1>{{title}}</h1>
+    </template>
+    <template id="my_parent">
+        <div>
+            <child2 :title="imgtitle"></child2>
+            <child1 :imgsrc="imgsrc"></child1>
+        </div>
+    </template>
+<script src="vuejs/vue.js"></script>
+<script type="text/javascript">
+    //父组件传递子组件用props
+    //创建组件
+   /* Vue.component("my-div",{
+        template:"#my_div",
+        props:["message","imgsrc"],
+    });*/
+    //1子组件的实例
+    /*let child1 = Vue.extend({
+        template:"#my_img",
+        props:['imgsrc']
+    });
+    let child2 = Vue.extend({
+        template:"#my_title",
+        props:['title']
+    });*/
+    //2。注册父组件
+    /*Vue.component("my-parent",{
+        template:"#my_parent",
+        props:['imgtitle','imgsrc'],
+        components:{
+            child1:{
+                template:"#my_img",
+                props:['imgsrc']
+            },
+            child2:{
+                template:"#my_title",
+                props:['title']
+            }
+        }
+    });*/
+
+    let vm= new Vue({
+    el:"#app",
+    data:{
+        title:"你好sdsdfsf！",
+        img: "20171120112809.jpg"
+    },
+    components:{
+        "my-parent":{
+            template:"#my_parent",
+            props:['imgtitle','imgsrc'],
+            components:{
+                "child1":{
+                    template:"#my_img",
+                    props:['imgsrc']
+                },
+                "child2":{
+                    template:"#my_title",
+                    props:['title']
+                }
+            }
+    }
+    }
+})
+</script>
+
+</body>
+</html>

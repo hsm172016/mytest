@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //1.形参设置默认值
+    function sum(num1=1,num2=2) {
+        console.log(num1 + num2);
+    }
+    sum(3.2,25);
+
+   /* function sum1() {
+        let result = 0;
+        for (let i of arguments){
+            result += i;
+        }
+        return result;
+    }
+*/
+    //2.参数形式，延展操作符
+    function sum1(...nums) {
+        let result = 0;
+        for (let i of nums){
+            result += i;
+        }
+        return result;
+    }
+    console.log(sum1(1, 2, 6, 66));
+    //3.箭头函数
+    //function () {}
+    ()=>{};
+    let sum6 = (num1,num2) => {
+        return num1+num2;
+    }
+    console.log(sum6(3, 3));
+    let nameArr = ['zhansan','lisi','waangwu'];
+    nameArr.forEach((value,index) => {
+        console.log(index +":"+ value);
+    });
+    function demo() {
+        setTimeout(function () {
+            console.log(this);
+        },1000);
+        setTimeout(() => {
+            console.log(this);
+        },1000);
+    }
+    let obj = {};
+    demo.call(obj);
+</script>
+</html>

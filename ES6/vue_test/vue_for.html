@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        table {
+            width: 600px;
+            margin: 0 auto;
+            border:2px solid #dddddd;
+            text-align: center;
+            padding: 0;
+        }
+        thead {
+            background: red;
+            color: #fff;
+        }
+        .active {
+            background: orangered;
+            font-size: 20px;
+            color: #fff;
+        }
+        ul>li:hover {
+            background: orangered;
+            font-size: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <table>
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>性别</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="p in persons">
+                <td>{{p.name}}</td>
+                <td>{{p.age}}</td>
+                <td>{{p.sex}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <p v-text="msg"></p>
+    <p v-html="html"></p>
+    <hr>
+    <img v-bind:src="src" alt="">
+    <hr>
+    <ul>
+        <li v-for="(c,index) in calleges" :class="index === activeindex ? 'active':''" v-on:click="onactive(index)">{{c}}</li>
+    </ul>
+    <hr>
+    <p :style="{color: fcolor}">今天天气很好！</p>
+    <hr>
+
+
+</div>
+<script src="vuejs/vue.js"></script>
+<script type="text/javascript">
+    //1.创建vue的实例
+    let vm= new Vue({
+    el:"#app",
+    data:{//vue中的model -> 数据
+        persons:[
+            {name:'zhangsan',age:26,sex:'nan'},
+            {name:'lisi',age:7,sex:'nan'},
+            {name:'wangwu',age:20,sex:'nan'},
+            {name:'mazi',age:66,sex:'nan'},
+        ],
+        msg: "sasdfa",
+        html:"<input type='date'/>",
+        src:"20171120112809.jpg",
+        calleges:[
+            'IOS学院',
+            'web学院',
+            'java学院',
+            'js学院',
+        ],
+        activeindex:3,
+        fcolor:'#ddd'
+
+    },
+    methods:{
+        onactive: function (re) {
+            this.activeindex = re
+        }
+    }
+})
+</script>
+</body>
+</html>

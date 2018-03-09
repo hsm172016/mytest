@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my-btn @total="allcunter()"></my-btn>
+    <my-btn @total="allcunter()"></my-btn>
+    <my-btn @total="allcunter()"></my-btn>
+    <my-btn @total="allcunter()"></my-btn>
+    <my-btn @total="allcunter()"></my-btn>
+    <hr>
+    <p>所以按钮一共点击了{{totalcounter}}次</p>
+</div>
+<template id="my_btn">
+    <button @click="total()">点击了&nbsp{{counter}}次</button>
+</template>
+<script src="vuejs/vue.js"></script>
+<script type="text/javascript">
+    Vue.component("my-btn",{
+        template:"#my_btn",
+        data(){
+            return {
+                counter:0,
+            }
+        },
+        methods:{
+            total(){
+                this.counter ++;
+                //通知外界，我调用了这个方法
+                this.$emit("total");
+            }
+        }
+    });
+    let vm= new Vue({
+    el:"#app",
+    data:{
+        totalcounter:0,
+    },
+    methods:{
+        allcunter(){
+            this.totalcounter ++;
+        }
+    }
+})
+</script>
+
+</body>
+</html>
